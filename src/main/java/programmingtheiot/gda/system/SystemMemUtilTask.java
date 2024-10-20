@@ -20,8 +20,6 @@ import programmingtheiot.common.ConfigConst;
 public class SystemMemUtilTask extends BaseSystemUtilTask
 {
 	// constructors
-	
-
 	/**
 	 * Default.
 	 * 
@@ -30,22 +28,16 @@ public class SystemMemUtilTask extends BaseSystemUtilTask
 	{
 		super(ConfigConst.NOT_SET, ConfigConst.DEFAULT_TYPE_ID);
 	}
-	
-	
+
 	// public methods
-	
 	@Override
 	public float getTelemetryValue()
 	{
 		MemoryUsage memUsage = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
 		double memUsed = (double) memUsage.getUsed();
 		double memMax  = (double) memUsage.getMax();
-		
 		_Logger.fine("Mem used: " + memUsed + "; Mem Max: " + memMax);
-		
 		double memUtil = (memUsed / memMax) * 100.0d;
-		
 		return (float) memUtil;
 	}
-	
 }
